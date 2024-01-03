@@ -2,21 +2,26 @@ import React from "react";
 
 const Header = () => {
   return (
-    <nav className="">
+    <nav className="absolute w-full top-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-6">
         <a
           href="https://flowbite.com/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <h2 className="text-4xl font-extrabold dark:text-white">StakDTX</h2>
+          <h1 className="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-white">
+            Stak{" "}
+            <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+              DTX
+            </span>
+          </h1>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
             type="button"
-            className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2"
+            className="text-gray-900 justify-center flex items-center bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500  mb-2"
           >
             <svg
-              className="w-4 h-4 me-2 -ms-1 text-[#626890]"
+              className="w-4 h-4  text-[#626890]"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -30,7 +35,6 @@ const Header = () => {
                 d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"
               ></path>
             </svg>
-            Pay with Ethereum
           </button>
 
           <button

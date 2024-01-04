@@ -3,9 +3,10 @@
 import React from "react";
 import Button from "../Button/Button";
 import { useState } from "react";
-
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 const Section = () => {
   const [option, setOption] = useState("liquidity");
+  const { open } = useWeb3Modal();
   return (
     <div className="flex flex-col items-center justify-center w-[500px] h-[350px] bg-[#27262C] rounded-[20px] shadow-md">
       <div className="flex items-center justify-center w-full  p-4">
@@ -77,17 +78,26 @@ const Section = () => {
         </div>
       )}
       {option === "liquidity" && (
-        <button className="flex items-center justify-center w-[95%] rounded-[20px] font-bold shadow-md p-4 my-4 bg-[#1fc7d4]">
+        <button
+          onClick={() => open()}
+          className="flex items-center justify-center w-[95%] rounded-[20px] font-bold shadow-md p-4 my-4 bg-[#1fc7d4]"
+        >
           Add liquidty
         </button>
       )}
       {option === "token" && (
-        <button className="flex items-center justify-center w-[95%] rounded-[20px] font-bold shadow-md p-4 my-4 bg-[#1fc7d4]">
+        <button
+          onClick={() => open()}
+          className="flex items-center justify-center w-[95%] rounded-[20px] font-bold shadow-md p-4 my-4 bg-[#1fc7d4]"
+        >
           Create Token
         </button>
       )}
       {option === "burn" && (
-        <button className="flex items-center justify-center w-[95%] rounded-[20px] font-bold shadow-md p-4 my-4 bg-[#1fc7d4]">
+        <button
+          onClick={() => open()}
+          className="flex items-center justify-center w-[95%] rounded-[20px] font-bold shadow-md p-4 my-4 bg-[#1fc7d4]"
+        >
           Burn Token
         </button>
       )}

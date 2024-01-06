@@ -15,6 +15,10 @@ const Section = () => {
   const [initalSupply, setInitalSupply] = useState(0);
   const [burnAmount, setBurnAmount] = useState(0);
   const [burnToken, setBurnToken] = useState("");
+  const [liquidityToken1, setLiquidityToken1] = useState("");
+  const [liquidityToken2, setLiquidityToken2] = useState("");
+  const [liquidityAmount1, setLiquidityAmount1] = useState(0);
+  const [liquidityAmount2, setLiquidityAmount2] = useState(0);
 
   const { data: useContractWriteData, write: myfunc } = useContractWrite({
     address: "0x2487FD2FaE2A44DB20488d2BfbB5588AAe26D235",
@@ -40,14 +44,20 @@ const Section = () => {
   });
 
   const { data: useContractWriteData2, write: myfunc2 } = useContractWrite({
-    address: "0xb6A68FA741e82F86f7EfA0AA95FA59505929A609",
+    address: "0xCD141376078085395cfb2a53256948FA89628529",
     abi: ERC20BurnFactoryABI.abi,
-    functionName: "addInitialLiquidity",
+    functionName: "addLiquidity",
+    args: [
+      liquidityToken1,
+      liquidityToken2,
+      liquidityAmount1,
+      liquidityAmount2,
+    ],
     chainId: 97,
   });
 
   return (
-    <div className="flex flex-col items-center justify-center w-[500px] h-[350px] bg-[#27262C] rounded-[20px] shadow-md">
+    <div className="flex flex-col items-center justify-center w-[500px]  bg-[#27262C] rounded-[20px] shadow-md">
       <div className="flex items-center justify-center w-full  p-4">
         <div
           onClick={() => setOption("liquidity")}
@@ -73,6 +83,40 @@ const Section = () => {
           <input
             className="flex outline-none w-full bg-transparent text-white"
             placeholder="Enter Token 1 Address"
+            value={liquidityToken1}
+            onChange={(e: any) => setLiquidityToken1(e.target.value)}
+          />
+        </div>
+      )}
+
+      {option === "liquidity" && (
+        <div className="flex items-center justify-center w-[95%] rounded-[20px] font-bold p-4 shadow-md border border-zinc-600 bg-[#08060B] my-4">
+          <input
+            className="flex outline-none w-full bg-transparent text-white"
+            placeholder="Enter Token 2 Address"
+            value={liquidityToken2}
+            onChange={(e: any) => setLiquidityToken2(e.target.value)}
+          />
+        </div>
+      )}
+
+      {option === "liquidity" && (
+        <div className="flex items-center justify-center w-[95%] rounded-[20px] font-bold p-4 shadow-md border border-zinc-600 bg-[#08060B] my-4">
+          <input
+            className="flex outline-none w-full bg-transparent text-white"
+            placeholder="Enter Token 1 Amount"
+            value={liquidityAmount1}
+            onChange={(e: any) => setLiquidityAmount1(e.target.value)}
+          />
+        </div>
+      )}
+      {option === "liquidity" && (
+        <div className="flex items-center justify-center w-[95%] rounded-[20px] font-bold p-4 shadow-md bg-[#08060B] border border-zinc-600 my-4">
+          <input
+            className="flex outline-none w-full bg-transparent text-white"
+            placeholder="Enter Token 2 Amount "
+            value={liquidityAmount2}
+            onChange={(e: any) => setLiquidityAmount2(e.target.value)}
           />
         </div>
       )}
@@ -95,14 +139,7 @@ const Section = () => {
           />
         </div>
       )}
-      {option === "liquidity" && (
-        <div className="flex items-center justify-center w-[95%] rounded-[20px] font-bold p-4 shadow-md bg-[#08060B] border border-zinc-600 my-4">
-          <input
-            className="flex outline-none w-full bg-transparent text-white"
-            placeholder="Enter Token 2 Address "
-          />
-        </div>
-      )}
+
       {option === "burn" && (
         <div className="flex items-center justify-center w-[95%] rounded-[20px] font-bold p-4 shadow-md bg-[#08060B] border border-zinc-600 my-4">
           <input
